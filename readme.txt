@@ -11,8 +11,10 @@ trong package.json
     start:.....  //dùng 'npm start' để chạy chương trình
 
 trong ViewEngine
-    app.use: chỉ cho phép người dùng truy cập vào file public
+    app.use: chỉ cho phép người dùng truy cập vào file public -- đây là về static file
 
 file .env : file môi trường
 
 npm install --save-exact dotenv@10.0.0 //để có thể dùng đc file .env
+
+npm install --save-exact mysql2@3.4.3 - 2.3.0
