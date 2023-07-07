@@ -9,24 +9,4 @@ const connection = mysql.createConnection({
     database: 'db_bandoanvat'
 });
 
-// simple query
-// connection.query(
-//     'SELECT * FROM `admin`',
-//     function (err, results, fields) {
-//         console.log(results); // results contains rows returned by server
-//         // console.log(fields); // fields contains extra meta data about results, if available
-//         console.log(results[0]); // results contains rows returned by server
-
-//     }
-// );
-
-// with placeholder
-// connection.query(
-//     'SELECT * FROM `table` WHERE `name` = ? AND `age` > ?',
-//     ['Page', 45],
-//     function (err, results) {
-//         console.log(results);
-//     }
-// );
-
 export default connection;
