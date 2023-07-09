@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const imageFilter = function (req, file, cb) {
+const imageFilter = function(req, file, cb) {
     // Accept images only
     if (!file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
         req.fileValidationError = 'Only image files are allowed!';
@@ -25,6 +25,7 @@ const imageFilter = function (req, file, cb) {
     }
     cb(null, true);
 };
+exports.imageFilter = imageFilter;
 
 let upload = multer({ storage: storage, fileFilter: imageFilter });
 
@@ -46,7 +47,10 @@ const initWebRouter = (app) => {
 
     router.post('/upload-single-file', upload.single('singleFile'), homeController.uploadSingleFile)
 
-    router.get('/hello', (req, res) => {
+    router.post('/upload-multiple-file', upload.array('multiFile', 2), homeController.uploadMultipleFile);
+
+
+    router.get('/', (req, res) => {
         res.send("Hello Công Thắng");
     })
 

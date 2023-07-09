@@ -126,6 +126,7 @@ let uploadSingleFile = async (req, res) => {
     // 'profile_pic' is the name of our file input field in the HTML form
     // let upload = multer({ storage: storage, fileFilter: imageFilter }).single('singleFile'); //singler trùng tên với bên view gửi lên
     let upload = multer().single('singleFile')
+    console.log(req.files);
 
     upload(req, res, function (err) {
         // req.file contains information of uploaded file
@@ -149,6 +150,29 @@ let uploadSingleFile = async (req, res) => {
     });
 }
 
+let uploadMultipleFile = (req, res) => {
+    console.log(!req.files);
+    if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+    }
+    else if (!req.files) {
+        return res.send('Please select an image to upload');
+    }
+
+    // Handle uploaded files
+    let result = "You have uploaded these images: <hr />";
+    const files = req.files;
+    let index, len;
+
+    // Loop through all the uploaded images and display them on the frontend
+    for (index = 0, len = files.length; index < len; ++index) {
+        result += `<img src="/images/${files[index].filename}" width="300" style="margin-right: 20px;">`;
+    }
+    result += `<hr/><a href="/upload-page">Upload more images</a>`;
+    res.send(result);
+
+}
+
 
 
 module.exports = { //đây là 1 obj, export funcion thì ở chỗ khác mới sử dụng đc
@@ -159,5 +183,6 @@ module.exports = { //đây là 1 obj, export funcion thì ở chỗ khác mới 
     getEditUser,
     editUser,
     getUploadFilePage,
-    uploadSingleFile
+    uploadSingleFile,
+    uploadMultipleFile
 }

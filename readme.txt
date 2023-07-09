@@ -23,3 +23,4 @@ npm install --save-exact multer@1.4.3 // hỗ trợ upload file
 
 npm install --save-exact app-root-path@3.0.0 // hỗ trợ lấy link local thư mục trên máy tính (path: 'C:\\Users\\ManhQuan\\Desktop\\Node_Basic')
 
+npm install --save-exact morgan@1.10.0 //middleware checklog từ req

@@ -20,6 +20,11 @@ configViewEngine(app); //setup view engine
 initWebRouter(app); // init web route
 initAPIRouter(app);
 
+//handle middle ware 404 not found: chạy vào từ trên xuống dưới, vào web k có vào api k có thì chạy xuống đến đây
+app.use((req, res) => {
+    res.render('404.ejs')
+})
+
 app.listen(port, () => {
     console.log(`app listening at http:localhost:${port}`);
 })
